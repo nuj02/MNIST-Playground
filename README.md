@@ -1,14 +1,17 @@
-# Digit-Recognition
+# MNIST Playground
 
-Exploration of classification of handwritten digits leveraging MNIST dataset using PyTorch.
+Exploration of MNIST dataset
 
-## 1. PCA
+## Dimension Reduction
 
-PCA is insufficient in handwritten digit classification of the MNIST dataset: 
-![Classification of digits using only 2 component PCA](https://github.com/nuj02/Digit-Recognition/blob/main/1%20PCA/figures/PCA_Classification.png?raw=true)
+### PCA
 
-## 2. Dimension Reduction Using Autoencoders
+Linear PCA is insufficient in differentiating different handwritten digits when using only two principal components.
+![MNIST Analysis using 2-Component PCA](./PCA/figures/PCA_Classification.png)
 
-Inspiration by ["Reducing the Dimensionality of Data with Neural Networks" by Hintonand Salakuhtdinov](https://www.science.org/doi/10.1126/science.1127647)
+## Autoencoders
 
-Therefore nonlinear PCA is explored using an autoencoder: encoding high-dimensional data to lower dimensions and recovering high-dimensional information from the dimension-reduced representation.
+Inspiration by ["Reducing the Dimensionality of Data with Neural Networks" by Hinton and Salakuhtdinov](https://www.science.org/doi/10.1126/science.1127647)
+
+An autoencoder with an encoder architecture of 768-1000-500-250-2 is used with a symmetric decoder. With a schedule learning rate of 0.1, 0.01, 0.001 for 50 epochs each. The projection onto the 2-dimensional latent space is used as a non-linear PCA.
+![MNIST Analysis using 2-dimensional latent space](./Autoencoder/figures/output.png)
